@@ -1,1 +1,1 @@
-module github.com/linux-immutability-tools/distrobox-lib
+module github.com/linux-immutability-tools/DistroboxLib
