@@ -1,7 +1,8 @@
 package types
 
-type ContainerStatus struct {
-	Running bool
-	Paused  bool
-	Stopped bool
-}
+type ContainerStatus string
+
+const (
+	ContainerStatusRunning ContainerStatus = "running"
+	ContainerStatusStopped ContainerStatus = "stopped"
+)
