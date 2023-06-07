@@ -4,16 +4,22 @@ import (
 	"fmt"
 
 	"github.com/linux-immutability-tools/DistroboxLib/bindings"
+	"github.com/linux-immutability-tools/DistroboxLib/core"
 )
 
 func main() {
-	// engine, err := core.NewEngine("podman", "storage", "overlay")
-	// if err != nil {
-	// 	panic(err)
-	// }
+	engine, err := core.NewPodmanEngine("storage", "overlay")
+	if err != nil {
+		panic(err)
+	}
 
-	//dbox, err := bindings.NewDboxWithOpts("/usr/lib/apx/distrobox", engine)
-	dbox, err := bindings.NewDbox("/usr/lib/apx/distrobox")
+	dbox, err := bindings.NewDboxWithOpts("/home/mirko/Downloads/89luca89-distrobox-1.4.2-1-g849131c/89luca89-distrobox-849131c/", engine)
+	//dbox, err := bindings.NewDbox("/usr/lib/apx/distrobox")
+	if err != nil {
+		panic(err)
+	}
+
+	err = dbox.CreateContainer("alpine:latest", "test", []string{}, []string{}, []string{}, []string{}, false, false, "", []string{})
 	if err != nil {
 		panic(err)
 	}
